@@ -1,100 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aashra Enterprises | India's Leading Furniture Brand</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <!-- रोटेशन को सपोर्ट करने के लिए यह लाइन बहुत ज़रूरी है -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Professional Gallery | Developer Ashish</title>
+    <style>
+        body { background: #000; color: #fff; font-family: sans-serif; margin: 0; padding: 0; }
+        
+        .header { 
+            padding: 15px; text-align: center; color: #00f2ff; 
+            font-size: 11px; letter-spacing: 4px; font-weight: bold; 
+            border-bottom: 1px solid #222; 
+        }
+
+        /* Portrait Mode (सीधा फोन) के लिए प्लेयर */
+        .viewport { 
+            width: 100vw; height: 56.25vw; 
+            position: relative; overflow: hidden; background: #000; 
+        }
+
+        iframe { 
+            position: absolute; 
+            top: -65px; /* Title Masking */
+            left: -5px; 
+            width: calc(100% + 10px); 
+            height: calc(100% + 130px); /* Logo Masking */
+            border: none; 
+        }
+
+        .nav-grid { display: grid; grid-template-columns: 1fr; gap: 12px; padding: 20px; }
+        .btn { 
+            background: #111; border: 1px solid #333; color: #fff; 
+            padding: 20px; border-radius: 12px; text-align: center; 
+            font-size: 14px; font-weight: bold; cursor: pointer; 
+        }
+        .active { border-color: #00f2ff; background: rgba(0, 242, 255, 0.1); color: #00f2ff; }
+
+        /* --- ROTATION LOGIC (Landscape Mode) --- */
+        @media (orientation: landscape) {
+            .header, .nav-grid { display: none; } /* वीडियो के अलावा सब छुपा दें */
+            .viewport { 
+                width: 100vw; height: 100vh; 
+                margin: 0; border-radius: 0; 
+            }
+            iframe { 
+                top: -75px; /* रोटेशन के बाद टाइटल छुपाने के लिए */
+                height: calc(100% + 150px); 
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="header">DEVELOPER BY ASHISH</div>
+    
+    <div class="viewport">
+        <iframe id="player" src="https://www.youtube.com/embed/videoseries?list=PL52KVnVncFkbV38wQ4FNz_LjOSkQu9p5n&modestbranding=1&rel=0&vq=hd1080&controls=1"></iframe>
+    </div>
 
-    <div class="promo-bar">upto ₹2000 off | Use Code: COMBO15</div>
+    <div class="nav-grid">
+        <div class="btn active" onclick="load('PL52KVnVncFkbV38wQ4FNz_LjOSkQu9p5n', this)">JAIPAL JI RETIREMENT VIDEO</div>
+        <div class="btn" onclick="load('PL52KVnVncFkbRx8PnnywcuZTfwxJhtl-D', this)">CHIRAG JAGARAN VIDEO</div>
+    </div>
 
-    <nav>
-        <div class="nav-container">
-            <div class="logo">AASHRA <span>ENTERPRISES</span></div>
-            <ul class="nav-links">
-                <li>COLLECTIONS <i class="fas fa-chevron-down"></i></li>
-                <li>FAVORITE CHAIRS</li>
-                <li>CORPORATE ORDERS</li>
-            </ul>
-            <div class="nav-icons">
-                <i class="fas fa-search"></i>
-                <i class="fas fa-user"></i>
-                <i class="fas fa-shopping-bag"></i>
-            </div>
-        </div>
-    </nav>
-
-    <section class="combo-banner">
-        <div class="combo-content">
-            <h2>Double Up & Save <span>15%</span></h2>
-            <p>Select your favourite <strong>chair + table</strong> today</p>
-            <div class="promo-code">Use Code: <span>COMBO15</span></div>
-            <button class="shop-now">SHOP NOW</button>
-        </div>
-    </section>
-
-    <section class="trust-section">
-        <h3>India's Leading Ergonomic Furniture Brand</h3>
-        <div class="ratings-container">
-            <div class="rating-box">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
-                <div class="stars">⭐⭐⭐⭐⭐ <span>55,000+ Reviews</span></div>
-            </div>
-            <div class="rating-box">
-                <img src="https://upload.wikimedia.org/wikipedia/en/9/94/Flipkart_logo.png" alt="Flipkart">
-                <div class="stars">⭐⭐⭐⭐⭐ <span>30,000+ Reviews</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="filter-section">
-        <h2>Bestsellers In</h2>
-        <div class="tabs">
-            <button class="tab active">Gaming</button>
-            <button class="tab">Office</button>
-            <button class="tab">Multi-Purpose Table</button>
-        </div>
-    </section>
-
-    <section class="product-grid">
-        <div class="product-card">
-            <div class="disc">-63%</div>
-            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=600" alt="Gaming Chair">
-        </div>
-        <div class="product-card">
-            <div class="disc">-59%</div>
-            <img src="https://images.unsplash.com/photo-1616486341351-70252447c574?q=80&w=600" alt="Gaming Chair">
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-brand">
-                <div class="logo white">AASHRA <span>ENTERPRISES</span></div>
-                <p>India's Trusted Brand for POWERFUL Gaming Chairs.</p>
-                <a href="https://wa.me/918700513896?text=Hi Prince, I am interested in Aashra Enterprises chairs." target="_blank" class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Whatsapp US
-                </a>
-            </div>
-            <div class="footer-links">
-                <h4>Support</h4>
-                <ul><li>Contact us</li><li>Warranty Registration</li><li>Support FAQS</li></ul>
-            </div>
-            <div class="footer-links">
-                <h4>Company</h4>
-                <ul><li>About</li><li>Blog</li><li>Earnings Program</li></ul>
-            </div>
-        </div>
-        <div class="footer-bottom">Designed & Developed by Aashra Enterprises | Founder: PRINCE</div>
-    </footer>
-
-    <a href="https://wa.me/918700513896" class="chat-widget" target="_blank">
-        <i class="fas fa-comment"></i>
-    </a>
-
+    <script>
+        function load(id, el) {
+            document.getElementById('player').src = "https://www.youtube.com/embed/videoseries?list=" + id + "&modestbranding=1&rel=0&vq=hd1080&controls=1&autoplay=1";
+            document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+            el.classList.add('active');
+        }
+    </script>
 </body>
 </html>
