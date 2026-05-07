@@ -2,69 +2,82 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <!-- रोटेशन को सपोर्ट करने के लिए यह लाइन बहुत ज़रूरी है -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Gallery | Developer Ashish</title>
     <style>
-        body { background: #000; color: #fff; font-family: sans-serif; margin: 0; padding: 0; }
+        body { background: #000; color: #fff; font-family: sans-serif; margin: 0; text-align: center; }
         
-        .header { 
-            padding: 15px; text-align: center; color: #00f2ff; 
-            font-size: 11px; letter-spacing: 4px; font-weight: bold; 
-            border-bottom: 1px solid #222; 
+        /* सर्वर डाउन मैसेज स्टाइल */
+        #offline-message {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            z-index: 9999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
+        #offline-message h1 { color: #ff4444; font-size: 24px; }
+        #offline-message p { color: #888; }
 
-        /* Portrait Mode (सीधा फोन) के लिए प्लेयर */
-        .viewport { 
-            width: 100vw; height: 56.25vw; 
-            position: relative; overflow: hidden; background: #000; 
-        }
+        .header { padding: 15px; color: #00f2ff; letter-spacing: 4px; border-bottom: 1px solid #222; }
+        .viewport { width: 100vw; height: 56.25vw; position: relative; overflow: hidden; }
+        iframe { position: absolute; top: -65px; left: -5px; width: calc(100% + 10px); height: calc(100% + 130px); border: none; }
+        .nav-grid { display: grid; gap: 12px; padding: 20px; }
+        .btn { background: #111; border: 1px solid #333; padding: 20px; border-radius: 12px; color: #fff; font-weight: bold; }
+        .active { border-color: #00f2ff; color: #00f2ff; }
 
-        iframe { 
-            position: absolute; 
-            top: -65px; /* Title Masking */
-            left: -5px; 
-            width: calc(100% + 10px); 
-            height: calc(100% + 130px); /* Logo Masking */
-            border: none; 
-        }
-
-        .nav-grid { display: grid; grid-template-columns: 1fr; gap: 12px; padding: 20px; }
-        .btn { 
-            background: #111; border: 1px solid #333; color: #fff; 
-            padding: 20px; border-radius: 12px; text-align: center; 
-            font-size: 14px; font-weight: bold; cursor: pointer; 
-        }
-        .active { border-color: #00f2ff; background: rgba(0, 242, 255, 0.1); color: #00f2ff; }
-
-        /* --- ROTATION LOGIC (Landscape Mode) --- */
         @media (orientation: landscape) {
-            .header, .nav-grid { display: none; } /* वीडियो के अलावा सब छुपा दें */
-            .viewport { 
-                width: 100vw; height: 100vh; 
-                margin: 0; border-radius: 0; 
-            }
-            iframe { 
-                top: -75px; /* रोटेशन के बाद टाइटल छुपाने के लिए */
-                height: calc(100% + 150px); 
-            }
+            .header, .nav-grid { display: none; }
+            .viewport { height: 100vh; }
+            iframe { top: -75px; height: calc(100% + 150px); }
         }
     </style>
 </head>
 <body>
-    <div class="header">DEVELOPER BY ASHISH</div>
-    
-    <div class="viewport">
-        <iframe id="player" src="https://www.youtube.com/embed/videoseries?list=PL52KVnVncFkbV38wQ4FNz_LjOSkQu9p5n&modestbranding=1&rel=0&vq=hd1080&controls=1"></iframe>
+
+    <div id="offline-message">
+        <h1>⚠️ Server Down</h1>
+        <p>Internet connection check karein ya thodi der baad try karein.</p>
+        <button onclick="window.location.reload()" style="padding:10px 20px; background:#00f2ff; border:none; border-radius:5px; margin-top:20px;">Retry</button>
     </div>
 
-    <div class="nav-grid">
-        <div class="btn active" onclick="load('PL52KVnVncFkbV38wQ4FNz_LjOSkQu9p5n', this)">JAIPAL JI RETIREMENT VIDEO</div>
-        <div class="btn" onclick="load('PL52KVnVncFkbRx8PnnywcuZTfwxJhtl-D', this)">CHIRAG JAGARAN VIDEO</div>
+    <div id="main-content">
+        <div class="header">DEVELOPER BY ASHISH</div>
+        
+        <div class="viewport">
+            <iframe id="player" src="https://www.youtube.com/embed/videoseries?list=PL52KVnVncFkbV38wQ4FNz_LjOSkQu9p5n&modestbranding=1&rel=0&vq=hd1080&controls=1"></iframe>
+        </div>
+
+        <div class="nav-grid">
+            <div class="btn active" onclick="load('PL52KVnVncFkbV38wQ4FNz_LjOSkQu9p5n', this)">JAIPAL JI RETIREMENT VIDEO</div>
+            <div class="btn" onclick="load('PL52KVnVncFkbRx8PnnywcuZTfwxJhtl-D', this)">CHIRAG JAGARAN VIDEO</div>
+        </div>
     </div>
 
     <script>
+        // इंटरनेट चेक करने का फंक्शन
+        function checkStatus() {
+            if (!navigator.onLine) {
+                document.getElementById('offline-message').style.display = 'flex';
+                document.getElementById('main-content').style.display = 'none';
+            } else {
+                document.getElementById('offline-message').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }
+        }
+
+        // इवेंट्स सुनना
+        window.addEventListener('offline', checkStatus);
+        window.addEventListener('online', checkStatus);
+        window.onload = checkStatus;
+
         function load(id, el) {
+            if (!navigator.onLine) {
+                alert("Server Down: No Internet");
+                return;
+            }
             document.getElementById('player').src = "https://www.youtube.com/embed/videoseries?list=" + id + "&modestbranding=1&rel=0&vq=hd1080&controls=1&autoplay=1";
             document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
             el.classList.add('active');
