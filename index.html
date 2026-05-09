@@ -6,7 +6,7 @@
     <title>The Royal 3D Anniversary | DJ BEATS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
 
         body {
             margin: 0; padding: 0; background: #080808;
@@ -21,10 +21,7 @@
             z-index: 10000; display: flex; align-items: center; justify-content: center; flex-direction: column;
         }
 
-        /* Circle Photo on Top of Button */
-        .entrance-profile-box {
-            position: relative; margin-bottom: 30px;
-        }
+        .entrance-profile-box { position: relative; margin-bottom: 30px; }
         .entrance-photo {
             width: 200px; height: 200px; border-radius: 50%;
             border: 4px solid #ffd700; object-fit: cover;
@@ -32,9 +29,9 @@
             animation: pulse-ring 2s infinite;
         }
         @keyframes pulse-ring {
-            0% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 60px rgba(255, 215, 0, 0.8); }
-            100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         .royal-btn {
@@ -44,21 +41,22 @@
             border-radius: 50px; cursor: pointer; letter-spacing: 2px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.4s;
         }
-        .royal-btn:hover { transform: scale(1.1); background: #fff; box-shadow: 0 0 40px #ffd700; }
+        .royal-btn:hover { transform: scale(1.1); background: #fff; }
 
         /* Heart Background Animation */
         .heart-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
         .fa-heart { position: absolute; color: rgba(255, 215, 0, 0.15); animation: heartbeat 4s infinite; }
         @keyframes heartbeat { 0%, 100% { transform: scale(1); opacity: 0.1; } 50% { transform: scale(1.4); opacity: 0.4; } }
 
-        /* Top Bar */
-        .nav-bar {
-            background: rgba(255, 215, 0, 0.95); color: #000; padding: 12px 0;
-            font-weight: 900; position: fixed; width: 100%; top: 0; z-index: 5000;
-        }
+        /* Navigation Bar */
+        .nav-bar { background: rgba(255, 215, 0, 0.95); color: #000; padding: 12px 0; font-weight: 900; position: fixed; width: 100%; top: 0; z-index: 5000; }
 
         .branding { margin-top: 110px; }
-        .branding h1 { font-size: 3rem; letter-spacing: 15px; color: #ffd700; text-shadow: 2px 2px 10px #000; }
+        .branding h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; letter-spacing: 10px; color: #ffd700; text-shadow: 2px 2px 10px #000; }
+
+        /* Quotes Section */
+        .shayeri-box { padding: 40px 20px; font-family: 'Great Vibes', cursive; font-size: 3rem; color: #ffd700; }
+        .eng-mix { font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #888; letter-spacing: 3px; text-transform: uppercase; margin-top: 10px; }
 
         /* Photo Frames */
         .glass-gallery {
@@ -73,17 +71,25 @@
         .glass-card:hover { transform: translateY(-10px); border-color: #ffd700; }
         .glass-card img { width: 100%; border-radius: 10px; object-fit: contain; }
 
-        /* Video Section Fixed */
+        /* Video Section */
         .video-box { max-width: 900px; margin: 60px auto; border: 5px solid #ffd700; border-radius: 15px; overflow: hidden; box-shadow: 0 0 40px #ffd700; }
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
         .video-wrapper iframe { position: absolute; top: -60px; left: 0; width: 100%; height: calc(100% + 120px); border: none; }
+
+        /* Contact Section */
+        .contact-section { margin: 50px 0; padding: 20px; }
+        .wa-btn {
+            background: #25D366; color: #fff; padding: 15px 30px;
+            border-radius: 50px; text-decoration: none; font-weight: bold;
+            display: inline-flex; align-items: center; gap: 10px; transition: 0.3s;
+        }
+        .wa-btn:hover { background: #128C7E; transform: scale(1.05); }
 
         .footer { background: #000; padding: 80px 20px; border-top: 5px solid #ffd700; margin-top: 80px; }
     </style>
 </head>
 <body>
 
-    <!-- 3D Entrance with Circle Photo -->
     <div id="entrance-layer">
         <div class="entrance-profile-box">
             <img src="WhatsApp Image 2026-05-09 at 3.36.18 PM.jpeg" class="entrance-photo" alt="Couple">
@@ -96,22 +102,24 @@
     <div class="heart-bg" id="hearts"></div>
 
     <div class="nav-bar">
-        <marquee scrollamount="12">HAPPY ANNIVERSARY DEEPIKA JI & MAHI JI ✨ WISHING YOU SAU SAAL KA SAATH ✨ DJ BEATS PRESENTATION ✨</marquee>
+        <marquee scrollamount="12">HAPPY ANNIVERSARY DEEPIKA JI & MAHI JI ✨ WISHING YOU FOREVER TOGETHER ✨ DJ BEATS PRESENTATION ✨</marquee>
     </div>
 
     <div class="branding">
         <h1>DJ BEATS</h1>
-        <p style="letter-spacing: 10px; color: #ffd700;">THE ROYAL CELEBRATION</p>
+        <p style="letter-spacing: 10px; color: #ffd700; font-weight: bold;">THE ROYAL CELEBRATION</p>
     </div>
 
-    <!-- Main Highlight -->
+    <div class="shayeri-box">
+        "Aapki Jodi hamesha salamat rahe, <br> Khushiyon se bhara rahe aapka har din."
+        <div class="eng-mix">A Beautiful Journey of 1000 Memories</div>
+    </div>
+
     <div style="max-width: 900px; margin: 40px auto; padding: 20px;">
         <img src="WhatsApp Image 2026-05-09 at 3.36.18 PM.jpeg" style="width:100%; border-radius:20px; border: 2px solid #ffd700;" alt="Main">
     </div>
 
-    <!-- Photo Gallery -->
     <div class="glass-gallery">
-        <div class="glass-card"><img src="WhatsApp Image 2026-05-09 at 3.58.37 PM.jpeg"></div>
         <div class="glass-card"><img src="WhatsApp Image 2026-05-09 at 2.36.48 PM.jpeg"></div>
         <div class="glass-card"><img src="WhatsApp Image 2026-05-09 at 3.36.16 PM (1).jpeg"></div>
         <div class="glass-card"><img src="WhatsApp Image 2026-05-09 at 3.36.16 PM.jpeg"></div>
@@ -120,12 +128,24 @@
         <div class="glass-card"><img src="WhatsApp Image 2026-05-09 at 3.36.17 PM.jpeg"></div>
     </div>
 
-    <!-- YouTube Video Section Wapas Aagayi -->
-    <h2 style="font-family: 'Great Vibes'; font-size: 4rem; color: #ffd700; margin-top: 80px;">Special Song For You</h2>
+    <div class="shayeri-box" style="font-size: 2.5rem;">
+        "Do dil ek jaan, sau saal ka saath... <br> Wishing you a life full of love and music."
+    </div>
+
     <div class="video-box">
         <div class="video-wrapper">
             <iframe id="yt-player" src="https://www.youtube.com/embed/fTbsjV2vmtw?enablejsapi=1&autoplay=0&controls=0&modestbranding=1&rel=0" allow="autoplay; encrypted-media"></iframe>
         </div>
+    </div>
+
+    <div class="contact-section">
+        <h2 style="color:#ffd700; font-family:'Playfair Display'; margin-bottom:20px;">Contact For Celebrations</h2>
+        <a href="https://wa.me/7530919863" class="wa-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+        <p style="margin-top:20px; color:#aaa; letter-spacing:1px;">
+            <i class="fas fa-envelope"></i> ASHISH95823@GMAIL.COM
+        </p>
     </div>
 
     <div class="footer">
