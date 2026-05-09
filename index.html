@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Anniversary | DJ BEATS</title>
+    <title>The Royal Anniversary | DJ BEATS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;700;900&display=swap');
@@ -14,117 +14,158 @@
             text-align: center; overflow-x: hidden;
         }
 
-        /* Entrance Overlay */
-        #welcome-screen {
+        /* Luxury Entrance Screen */
+        #entrance-layer {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle, #1a0b2e, #000);
             z-index: 10000; display: flex; align-items: center; justify-content: center; flex-direction: column;
+            text-align: center; border: 15px solid #ffd700; box-sizing: border-box;
         }
-        .enter-btn {
-            background: linear-gradient(45deg, #ffd700, #b8860b);
-            color: #000; padding: 25px 50px; font-weight: 900; font-size: 1.8rem;
-            border: none; border-radius: 60px; cursor: pointer;
-            box-shadow: 0 0 40px #ffd700; transition: 0.4s;
+        .royal-btn {
+            background: #ffd700; color: #000; padding: 25px 60px;
+            font-weight: 900; font-size: 1.8rem; border: none;
+            border-radius: 5px; cursor: pointer; letter-spacing: 4px;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.6); transition: 0.5s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .royal-btn:hover { background: #fff; letter-spacing: 8px; transform: scale(1.05); }
+
+        /* Animated Background Hearts */
+        .bg-decor { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .pulse-heart {
+            position: absolute; color: rgba(255, 215, 0, 0.2);
+            animation: heartbeat 4s infinite ease-in-out;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(0.8); opacity: 0.1; }
+            50% { transform: scale(1.4); opacity: 0.4; }
         }
 
-        /* Top Bar */
-        .top-scroller {
+        /* High-End Header */
+        .golden-bar {
             background: linear-gradient(90deg, #ffd700, #b8860b, #ffd700);
             color: #000; padding: 15px 0; font-weight: 900;
-            position: fixed; width: 100%; top: 0; z-index: 1000;
+            position: fixed; width: 100%; top: 0; z-index: 5000;
+            box-shadow: 0 5px 30px rgba(255,215,0,0.4);
         }
 
-        /* Logo */
-        .logo-section { margin-top: 120px; }
-        .logo-glow {
-            width: 150px; height: 150px; border: 5px solid #ffd700;
-            border-radius: 50%; margin: 0 auto; display: flex;
-            align-items: center; justify-content: center;
-            box-shadow: 0 0 50px #ffd700;
+        /* Branding */
+        .logo-box { margin-top: 130px; }
+        .logo-frame {
+            width: 160px; height: 160px; border: 2px solid #ffd700;
+            margin: 0 auto; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 40px #ffd700; transform: rotate(45deg);
         }
-        .brand-name { font-size: 4rem; font-weight: 900; letter-spacing: 15px; color: #ffd700; margin-top: 20px; display: block; }
+        .logo-frame i { transform: rotate(-45deg); font-size: 4rem; color: #fff; text-shadow: 0 0 20px #ffd700; }
+        .brand-text { font-size: 4.5rem; font-weight: 900; letter-spacing: 25px; color: #ffd700; margin-top: 50px; display: block; }
 
-        /* Gallery */
-        .pro-gallery {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px; padding: 40px; max-width: 1400px; margin: 0 auto;
-        }
-        .img-card {
-            background: rgba(255,255,255,0.02); border-radius: 20px; padding: 15px;
-            border: 1px solid rgba(255,215,0,0.1); display: flex; align-items: center; justify-content: center; min-height: 450px;
-        }
-        .img-card img { max-width: 100%; max-height: 420px; border-radius: 10px; object-fit: contain; }
+        /* Quotes Section */
+        .quote-box { padding: 60px 20px; font-family: 'Great Vibes', cursive; font-size: 3rem; color: #ffd700; }
+        .sub-quote { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 5px; color: #888; text-transform: uppercase; }
 
-        /* --- New Video Box Section --- */
-        .video-container {
-            max-width: 900px; margin: 60px auto; padding: 20px;
-            background: rgba(255, 215, 0, 0.05); border-radius: 30px;
-            border: 2px solid #ffd700; box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
+        /* Professional Gallery */
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px; padding: 50px; max-width: 1600px; margin: 0 auto;
         }
-        .video-wrapper {
-            position: relative; padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0; overflow: hidden; border-radius: 15px;
-            background: #000;
+        .photo-frame {
+            background: rgba(255,215,0,0.03); padding: 20px; border-radius: 5px;
+            border: 1px solid rgba(255,215,0,0.2); transition: 0.6s;
+            display: flex; align-items: center; justify-content: center; min-height: 500px;
         }
-        .video-wrapper iframe {
-            position: absolute; top: -60px; left: 0; /* Hiding Top Info */
-            width: 100%; height: calc(100% + 120px); /* Adjusting to hide YouTube UI */
-            border: none;
+        .photo-frame:hover { border-color: #ffd700; background: rgba(255,215,0,0.08); transform: scale(1.02); }
+        .photo-frame img { max-width: 100%; max-height: 480px; object-fit: contain; filter: drop-shadow(0 10px 20px #000); }
+
+        /* Video Section - Invisible Border Style */
+        .video-box {
+            max-width: 1000px; margin: 80px auto; padding: 10px;
+            background: #000; border: 5px solid #ffd700; position: relative;
         }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-wrapper iframe { position: absolute; top: -60px; left: 0; width: 100%; height: calc(100% + 120px); border: none; }
 
         /* Footer */
-        .final-footer { background: #000; padding: 80px 20px; border-top: 5px solid #ffd700; margin-top: 100px; }
-        .dev-tag { font-size: 1rem; letter-spacing: 5px; color: #444; margin-top: 40px; }
-        .dev-tag b { color: #ffd700; }
+        .royal-footer { background: #000; padding: 120px 20px; border-top: 10px solid #ffd700; margin-top: 100px; }
+        .ashish-tag { font-size: 1.1rem; letter-spacing: 10px; color: #444; margin-top: 50px; border-top: 1px solid #222; padding-top: 20px; }
+        .ashish-tag b { color: #ffd700; }
     </style>
 </head>
 <body>
 
-    <div id="welcome-screen">
-        <h2 style="color:#ffd700; font-family:'Great Vibes'; font-size: 4rem; margin-bottom: 30px;">Forever Together</h2>
-        <button class="enter-btn" onclick="startShow()">🎉 CELEBRATE NOW</button>
+    <div id="entrance-layer">
+        <h2 style="color:#fff; font-size: 1.2rem; letter-spacing: 10px; margin-bottom: 10px;">DJ BEATS EXCLUSIVE</h2>
+        <h1 style="color:#ffd700; font-family:'Great Vibes'; font-size: 5rem; margin-bottom: 40px;">Marriage Anniversary</h1>
+        <button class="royal-btn" onclick="unveilCelebration()">ENTER CELEBRATION</button>
     </div>
 
-    <div class="top-scroller">
-        <marquee scrollamount="15">DJ BEATS PRESENTS: HAPPY ANNIVERSARY DEEPIKA JI ✨ WISHING YOU A LIFE FULL OF LOVE & MUSIC ✨</marquee>
+    <div class="bg-decor" id="heart-box"></div>
+
+    <div class="golden-bar">
+        <marquee scrollamount="15">HAPPY ANNIVERSARY DEEPIKA JI & MAHI JI ✨ MAY YOUR LOVE GROW STRONGER WITH EACH PASSING YEAR ✨ FOREVER TOGETHER ✨</marquee>
     </div>
 
-    <div class="logo-section">
-        <div class="logo-glow"><i class="fas fa-headphones-alt" style="font-size: 4rem; color:#fff;"></i></div>
-        <span class="brand-name">DJ BEATS</span>
+    <div class="logo-box">
+        <div class="logo-frame"><i class="fas fa-headphones-alt"></i></div>
+        <span class="brand-text">DJ BEATS</span>
     </div>
 
-    <h1 style="font-family: 'Great Vibes'; font-size: 6rem; color:#ffd700; margin-top: 50px;">Love Gallery</h1>
-
-    <div class="pro-gallery">
-        <div class="img-card"><img src="WhatsApp Image 2026-05-09 at 2.36.48 PM.jpeg"></div>
-        <div class="img-card"><img src="WhatsApp Image 2026-05-09 at 3.36.16 PM (1).jpeg"></div>
-        <div class="img-card"><img src="WhatsApp Image 2026-05-09 at 3.36.16 PM.jpeg"></div>
-        <div class="img-card"><img src="WhatsApp Image 2026-05-09 at 3.36.17 PM (1).jpeg"></div>
-        <div class="img-card"><img src="WhatsApp Image 2026-05-09 at 3.36.17 PM (2).jpeg"></div>
-        <div class="img-card"><img src="WhatsApp Image 2026-05-09 at 3.36.17 PM.jpeg"></div>
+    <div class="quote-box">
+        "Do dil ek jaan, sau saal ka saath..."
+        <div class="sub-quote">A Beautiful Journey of Love</div>
     </div>
 
-    <h2 style="font-family: 'Great Vibes'; font-size: 4rem; color:#ffd700; margin-top: 80px;">Our Special Song</h2>
-    <div class="video-container">
+    <div class="gallery-grid">
+        <div class="photo-frame"><img src="WhatsApp Image 2026-05-09 at 3.36.18 PM.jpeg"></div>
+        <div class="photo-frame"><img src="WhatsApp Image 2026-05-09 at 2.36.48 PM.jpeg"></div>
+        <div class="photo-frame"><img src="WhatsApp Image 2026-05-09 at 3.36.16 PM (1).jpeg"></div>
+        <div class="photo-frame"><img src="WhatsApp Image 2026-05-09 at 3.36.16 PM.jpeg"></div>
+        <div class="photo-frame"><img src="WhatsApp Image 2026-05-09 at 3.36.17 PM (1).jpeg"></div>
+        <div class="photo-frame"><img src="WhatsApp Image 2026-05-09 at 3.36.17 PM (2).jpeg"></div>
+        <div class="photo-frame"><img src="WhatsApp Image 2026-05-09 at 3.36.17 PM.jpeg"></div>
+    </div>
+
+    <div class="quote-box" style="font-size: 2.5rem;">
+        "Aapki Jodi hamesha salamat rahe, <br>khushiyon se bhara rahe aapka har din."
+    </div>
+
+    <div class="video-box">
         <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/fTbsjV2vmtw?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&loop=1&playlist=fTbsjV2vmtw" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe id="yt-player" src="https://www.youtube.com/embed/fTbsjV2vmtw?enablejsapi=1&autoplay=0&controls=0&modestbranding=1&rel=0" allow="autoplay; encrypted-media"></iframe>
         </div>
-        <p style="margin-top: 15px; font-weight: bold; color: #ffd700;">Me to tere nal hi rehna ji ❤️</p>
     </div>
 
-    <div class="final-footer">
-        <h3 style="font-family: 'Great Vibes'; font-size: 4rem; color: #ffd700; margin: 0;">Love You Always</h3>
-        <p style="letter-spacing: 8px; color: #666;">A PRESENTATION BY DJ BEATS FAMILY</p>
-        <div class="dev-tag">DESIGNED BY <b>ASHISH</b></div>
+    <div class="royal-footer">
+        <h3 style="font-family: 'Great Vibes'; font-size: 5rem; color: #ffd700; margin: 0;">Infinite Love</h3>
+        <p style="letter-spacing: 10px; color: #555;">CELEBRATING TOGETHERNESS</p>
+        <div class="ashish-tag">MASTERPIECE BY <b>ASHISH</b></div>
     </div>
 
-    <audio id="bg-song" loop><source src="song.mp3" type="audio/mpeg"></audio>
+    <audio id="main-audio" loop><source src="song.mp3" type="audio/mpeg"></audio>
 
     <script>
-        function startShow() {
-            document.getElementById('welcome-screen').style.display = 'none';
-            document.getElementById("bg-song").play();
+        function unveilCelebration() {
+            document.getElementById('entrance-layer').style.display = 'none';
+            // Play Audio
+            var audio = document.getElementById("main-audio");
+            audio.play();
+            // Start YouTube Video (Play)
+            var player = document.getElementById('yt-player');
+            player.src += "&autoplay=1";
+            
+            spawnHearts();
+        }
+
+        function spawnHearts() {
+            const box = document.getElementById('heart-box');
+            for (let i = 0; i < 40; i++) {
+                const h = document.createElement('i');
+                h.className = 'fas fa-heart pulse-heart';
+                h.style.left = Math.random() * 100 + 'vw';
+                h.style.top = Math.random() * 100 + 'vh';
+                h.style.fontSize = (Math.random() * 30 + 10) + 'px';
+                h.style.animationDelay = Math.random() * 5 + 's';
+                box.appendChild(h);
+            }
         }
     </script>
 </body>
