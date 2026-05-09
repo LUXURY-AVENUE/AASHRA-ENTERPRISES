@@ -14,7 +14,7 @@
             text-align: center; overflow-x: hidden;
         }
 
-        /* Luxury Entrance Screen */
+        /* Grand Entrance Screen */
         #entrance-layer {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle, #1a0b2e, #000);
@@ -26,14 +26,12 @@
             font-weight: 900; font-size: 1.8rem; border: none;
             border-radius: 5px; cursor: pointer; letter-spacing: 4px;
             box-shadow: 0 0 50px rgba(255, 215, 0, 0.6); transition: 0.5s;
-            font-family: 'Montserrat', sans-serif;
         }
-        .royal-btn:hover { background: #fff; letter-spacing: 8px; transform: scale(1.05); }
 
-        /* Animated Background Hearts */
+        /* Animated Background Decor */
         .bg-decor { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
         .pulse-heart {
-            position: absolute; color: rgba(255, 215, 0, 0.2);
+            position: absolute; color: rgba(255, 215, 0, 0.15);
             animation: heartbeat 4s infinite ease-in-out;
         }
         @keyframes heartbeat {
@@ -41,42 +39,65 @@
             50% { transform: scale(1.4); opacity: 0.4; }
         }
 
-        /* High-End Header */
         .golden-bar {
             background: linear-gradient(90deg, #ffd700, #b8860b, #ffd700);
             color: #000; padding: 15px 0; font-weight: 900;
             position: fixed; width: 100%; top: 0; z-index: 5000;
-            box-shadow: 0 5px 30px rgba(255,215,0,0.4);
         }
 
-        /* Branding */
         .logo-box { margin-top: 130px; }
         .logo-frame {
-            width: 160px; height: 160px; border: 2px solid #ffd700;
+            width: 140px; height: 140px; border: 2px solid #ffd700;
             margin: 0 auto; display: flex; align-items: center; justify-content: center;
             box-shadow: 0 0 40px #ffd700; transform: rotate(45deg);
         }
         .logo-frame i { transform: rotate(-45deg); font-size: 4rem; color: #fff; text-shadow: 0 0 20px #ffd700; }
-        .brand-text { font-size: 4.5rem; font-weight: 900; letter-spacing: 25px; color: #ffd700; margin-top: 50px; display: block; }
+        .brand-text { font-size: 4rem; font-weight: 900; letter-spacing: 20px; color: #ffd700; margin-top: 45px; display: block; }
 
-        /* Quotes Section */
-        .quote-box { padding: 60px 20px; font-family: 'Great Vibes', cursive; font-size: 3rem; color: #ffd700; }
-        .sub-quote { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 5px; color: #888; text-transform: uppercase; }
-
-        /* Professional Gallery */
-        .gallery-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px; padding: 50px; max-width: 1600px; margin: 0 auto;
+        /* --- New Professional Gallery Styling --- */
+        .gallery-container {
+            column-count: 3; /* Masonry effect */
+            column-gap: 20px;
+            padding: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
-        .photo-frame {
-            background: rgba(255,215,0,0.03); padding: 20px; border-radius: 5px;
-            border: 1px solid rgba(255,215,0,0.2); transition: 0.6s;
-            display: flex; align-items: center; justify-content: center; min-height: 500px;
-        }
-        .photo-frame:hover { border-color: #ffd700; background: rgba(255,215,0,0.08); transform: scale(1.02); }
-        .photo-frame img { max-width: 100%; max-height: 480px; object-fit: contain; filter: drop-shadow(0 10px 20px #000); }
 
-        /* Video Section - Invisible Border Style */
+        @media (max-width: 900px) { .gallery-container { column-count: 2; } }
+        @media (max-width: 600px) { .gallery-container { column-count: 1; } }
+
+        .photo-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.1);
+            transition: 0.4s ease-in-out;
+            background: #111;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: 0.5s;
+            filter: brightness(0.9);
+        }
+
+        .photo-item:hover {
+            border-color: #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+        .photo-item:hover img {
+            filter: brightness(1.1);
+            transform: scale(1.05);
+        }
+
+        /* Video Box Style */
         .video-box {
             max-width: 1000px; margin: 80px auto; padding: 10px;
             background: #000; border: 5px solid #ffd700; position: relative;
@@ -84,8 +105,7 @@
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
         .video-wrapper iframe { position: absolute; top: -60px; left: 0; width: 100%; height: calc(100% + 120px); border: none; }
 
-        /* Footer */
-        .royal-footer { background: #000; padding: 120px 20px; border-top: 10px solid #ffd700; margin-top: 100px; }
+        .royal-footer { background: #000; padding: 100px 20px; border-top: 10px solid #ffd700; margin-top: 100px; }
         .ashish-tag { font-size: 1.1rem; letter-spacing: 10px; color: #444; margin-top: 50px; border-top: 1px solid #222; padding-top: 20px; }
         .ashish-tag b { color: #ffd700; }
     </style>
@@ -101,7 +121,7 @@
     <div class="bg-decor" id="heart-box"></div>
 
     <div class="golden-bar">
-        <marquee scrollamount="15">HAPPY ANNIVERSARY DEEPIKA JI & MAHI JI ✨ MAY YOUR LOVE GROW STRONGER WITH EACH PASSING YEAR ✨ FOREVER TOGETHER ✨</marquee>
+        <marquee scrollamount="15">HAPPY ANNIVERSARY DEEPIKA JI & MAHI JI ✨ FOREVER TOGETHER IN LOVE ✨ DJ BEATS PRESENTATION ✨</marquee>
     </div>
 
     <div class="logo-box">
@@ -109,22 +129,16 @@
         <span class="brand-text">DJ BEATS</span>
     </div>
 
-    <div class="quote-box">
-        "Do dil ek jaan, sau saal ka saath..."
-        <div class="sub-quote">A Beautiful Journey of Love</div>
-    </div>
+    <h2 style="font-family: 'Great Vibes', cursive; font-size: 4rem; color: #ffd700; margin-top: 80px;">Beautiful Memories</h2>
 
-    <div class="gallery-grid">
-        <div class="photo-frame"><img src="WhatsApp Image 2026-05-09 at 3.36.18 PM.jpeg"></div>
-        <div class="photo-frame"><img src="WhatsApp Image 2026-05-09 at 2.36.48 PM.jpeg"></div>
-        <div class="photo-frame"><img src="WhatsApp Image 2026-05-09 at 3.36.16 PM (1).jpeg"></div>
-        <div class="photo-frame"><img src="WhatsApp Image 2026-05-09 at 3.36.16 PM.jpeg"></div>
-        <div class="photo-frame"><img src="WhatsApp Image 2026-05-09 at 3.36.17 PM (1).jpeg"></div>
-        <div class="photo-frame"><img src="WhatsApp Image 2026-05-09 at 3.36.17 PM (2).jpeg"></div>
-    </div>
-
-    <div class="quote-box" style="font-size: 2.5rem;">
-        "Aapki Jodi hamesha salamat rahe, <br>khushiyon se bhara rahe aapka har din."
+    <div class="gallery-container">
+        <div class="photo-item"><img src="WhatsApp Image 2026-05-09 at 3.36.18 PM.jpeg"></div>
+        <div class="photo-item"><img src="WhatsApp Image 2026-05-09 at 2.36.48 PM.jpeg"></div>
+        <div class="photo-item"><img src="WhatsApp Image 2026-05-09 at 3.36.16 PM (1).jpeg"></div>
+        <div class="photo-item"><img src="WhatsApp Image 2026-05-09 at 3.36.16 PM.jpeg"></div>
+        <div class="photo-item"><img src="WhatsApp Image 2026-05-09 at 3.36.17 PM (1).jpeg"></div>
+        <div class="photo-item"><img src="WhatsApp Image 2026-05-09 at 3.36.17 PM (2).jpeg"></div>
+        <div class="photo-item"><img src="WhatsApp Image 2026-05-09 at 3.36.17 PM.jpeg"></div>
     </div>
 
     <div class="video-box">
@@ -144,13 +158,9 @@
     <script>
         function unveilCelebration() {
             document.getElementById('entrance-layer').style.display = 'none';
-            // Play Audio
-            var audio = document.getElementById("main-audio");
-            audio.play();
-            // Start YouTube Video (Play)
+            document.getElementById("main-audio").play();
             var player = document.getElementById('yt-player');
             player.src += "&autoplay=1";
-            
             spawnHearts();
         }
 
@@ -161,7 +171,7 @@
                 h.className = 'fas fa-heart pulse-heart';
                 h.style.left = Math.random() * 100 + 'vw';
                 h.style.top = Math.random() * 100 + 'vh';
-                h.style.fontSize = (Math.random() * 30 + 10) + 'px';
+                h.style.fontSize = (Math.random() * 25 + 10) + 'px';
                 h.style.animationDelay = Math.random() * 5 + 's';
                 box.appendChild(h);
             }
